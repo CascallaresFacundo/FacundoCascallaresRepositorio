@@ -1,0 +1,64 @@
+/* src/styles/global.css */
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
+  
+  /* Sistema cromático Linear: Negros puros y grises de aluminio */
+  --color-bg-base: #030303;
+  --color-surface-premium: rgba(255, 255, 255, 0.015);
+  --color-border-premium: rgba(255, 255, 255, 0.04);
+}
+
+html {
+  scroll-behavior: auto;
+  background-color: var(--color-bg-base);
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  background-color: var(--color-bg-base);
+  letter-spacing: -0.01em;
+}
+
+/* --- Dirección de Arte High-End --- */
+
+/* Glassmorphism Quirúrgico */
+.glass-panel {
+  background: var(--color-surface-premium);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border-premium);
+}
+
+/* Efecto de Texto Revelado Cinematográfico */
+.text-reveal-mask {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* Hover de Tarjeta Estilo Bento Box (Linear) */
+.bento-card {
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  transition: border-color 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
+              background-color 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bento-card:hover {
+  background: rgba(255, 255, 255, 0.025);
+  border-color: rgba(255, 255, 255, 0.09);
+}
+
+/* Refinamiento del cursor e interacciones */
+.premium-interactive {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.premium-interactive:hover {
+  transform: scale(1.02);
+}
