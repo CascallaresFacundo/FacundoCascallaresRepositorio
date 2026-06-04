@@ -131,6 +131,7 @@ const { profile, socials, experience } = portfolioData;
 
 <script>
   import { gsap } from 'gsap';
+  import DOMPurify from 'dompurify';
 
   window.addEventListener('DOMContentLoaded', () => {
     const tl = gsap.timeline({ defaults: { ease: 'cubic-bezier(0.16, 1, 0.3, 1)', duration: 1.2 } });
@@ -156,6 +157,7 @@ const { profile, socials, experience } = portfolioData;
       });
     });
 
+    // Lógica del Formulario
     const form = document.getElementById('contact-form') as HTMLFormElement;
     const status = document.getElementById('form-status');
     const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
@@ -164,17 +166,25 @@ const { profile, socials, experience } = portfolioData;
       form.addEventListener('submit', async (e) => {
         e.preventDefault(); 
         
-        // Bloqueo visual preventivo del botón de envío
+        // Estado de carga visual
         submitBtn.disabled = true;
         submitBtn.innerText = "ENVIANDO...";
         submitBtn.style.opacity = "0.5";
 
-        const data = new FormData(form);
+        // DOMPurify
+        const rawName = (document.getElementById('name') as HTMLInputElement).value;
+        const rawEmail = (document.getElementById('email') as HTMLInputElement).value;
+        const rawMessage = (document.getElementById('message') as HTMLTextAreaElement).value;
+
+        const cleanData = new FormData();
+        cleanData.append('name', DOMPurify.sanitize(rawName));
+        cleanData.append('email', DOMPurify.sanitize(rawEmail));
+        cleanData.append('message', DOMPurify.sanitize(rawMessage));
         
         try {
           const response = await fetch(form.action, {
             method: form.method,
-            body: data,
+            body: cleanData,
             headers: {
               'Accept': 'application/json'
             }
