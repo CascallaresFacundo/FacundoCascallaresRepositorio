@@ -24,7 +24,7 @@ export const Technologies: React.FC = () => {
       <div>
         <p className="text-[10px] font-mono tracking-widest text-neutral-500 uppercase mb-4">// INFRAESTRUCTURA</p>
         <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tighter text-white">
-          Stack Técnico <span className="text-neutral-600">& Capacidades</span>
+          Stack Técnico
         </h2>
       </div>
       

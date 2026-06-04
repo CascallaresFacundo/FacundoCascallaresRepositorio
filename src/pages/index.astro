@@ -10,10 +10,7 @@ const { profile, socials, experience } = portfolioData;
 
 <Layout title={`${profile.name} | ${profile.role}`}>
   
-  <!-- SECCIÓN: HERO -->
   <section class="relative min-h-[95vh] flex flex-col justify-between px-6 md:px-12 max-w-7xl mx-auto z-20 pt-32 pb-16">
-    <div></div>
-
     <div class="space-y-10 max-w-5xl">
       <div id="hero-tag" class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/[0.02] border border-white/5 opacity-0 transform translate-y-4">
         <span class="relative flex h-2 w-2">
@@ -61,11 +58,25 @@ const { profile, socials, experience } = portfolioData;
     <div class="lg:col-span-5 space-y-8">
       <p class="text-[10px] font-mono tracking-widest text-neutral-500 uppercase">// SOBRE MI</p>
       <h2 class="text-3xl md:text-4xl font-display font-medium text-white tracking-tight leading-tight">
-        Un solo motor, múltiples plataformas.
+        Arquitectura sólida para aplicaciones escalables.
       </h2>
       <p class="text-neutral-400 leading-relaxed font-light text-sm">
-        Me especializo en construir la lógica y las APIs que conectan el servidor con aplicaciones web y móviles. Mi enfoque está en estructurar bases de datos eficientes y escribir código limpio bajo buenas prácticas, asegurando que la información fluya de forma rápida, segura y consistente sin importar desde qué dispositivo se conecte el usuario.
+        Me enfoco en el diseño, desarrollo y optimización del lado del servidor. Mi experiencia autónoma me ha permitido resolver desafíos lógicos reales de negocio: desde el modelado y rendimiento de bases de datos relacionales y la automatización de procesos mediante scripts, hasta la integración segura de pasarelas de pago y la sanitización de flujos de datos. Busco incorporarme a un equipo IT corporativo para aplicar estas metodologías en sistemas complejos y robustos.
       </p>
+
+      <div class="pt-2">
+        <a 
+          href="/api/cv" 
+          target="_blank" 
+          class="inline-flex items-center gap-3 px-4 py-2.5 rounded-lg bg-white/[0.01] border border-white/5 hover:border-neutral-500/40 transition-all duration-300 group premium-interactive"
+        >
+          <span class="font-mono text-[11px] text-emerald-400 font-semibold tracking-wide">GET</span>
+          <span class="font-mono text-[11px] text-neutral-300">/api/cv</span>
+          <span class="font-mono text-[10px] text-neutral-500 group-hover:text-neutral-300 transition-colors duration-300 ml-1">
+            [Ver CV.json] →
+          </span>
+        </a>
+      </div>
     </div>
     
     <div class="lg:col-span-7 space-y-16 relative border-l border-white/5 pl-8 ml-2">
@@ -88,11 +99,11 @@ const { profile, socials, experience } = portfolioData;
       ))}
     </div>
   </section>
+
   <Technologies client:load />
 
   <ProjectsSection client:load />
   
-  <!-- SECCIÓN: PREGUNTAS FRECUENTES (FAQ) -->
   <section id="faq" class="py-32 px-6 max-w-3xl mx-auto relative z-20 border-t border-white/[0.02]">
     <p class="text-[10px] font-mono tracking-widest text-neutral-500 uppercase text-center mb-4">// PREGUNTAS FRECUENTES</p>
     <h2 class="text-3xl md:text-4xl font-display font-bold tracking-tight text-center text-white mb-12">Respuestas rápidas a dudas comunes.</h2>
@@ -114,33 +125,30 @@ const { profile, socials, experience } = portfolioData;
       <details class="group glass-panel p-6 rounded-xl border border-white/[0.03] [&_summary::-webkit-details-marker]:hidden open:bg-white/[0.02] transition-all duration-300">
         <summary class="flex items-center justify-between cursor-pointer focus:outline-hidden">
           <h3 class="text-sm font-sans font-medium text-neutral-200 group-hover:text-white transition-colors duration-300">
-            ¿Qué tipo de soporte ofrecés?
+            ¿Qué tipo de soporte u optimización ofrecés post-entrega?
           </h3>
           <span class="text-neutral-500 group-open:rotate-180 transition-transform duration-300 text-xs font-mono">↓</span>
         </summary>
         <p class="mt-4 text-xs font-sans font-light text-neutral-400 leading-relaxed border-t border-white/5 pt-4">
-          Ofrezco planes con soporte mensual en los distintos tipos de páginas web.
+          Cada sistema se entrega con código limpio, modular y documentado. Además del despliegue inicial, ofrezco soporte técnico enfocado en auditorías de rendimiento en bases de datos, actualizaciones de seguridad, parches en las APIs y monitoreo técnico para garantizar estabilidad absoluta a largo plazo.
         </p>
       </details>
 
       <details class="group glass-panel p-6 rounded-xl border border-white/[0.03] [&_summary::-webkit-details-marker]:hidden open:bg-white/[0.02] transition-all duration-300">
         <summary class="flex items-center justify-between cursor-pointer focus:outline-hidden">
           <h3 class="text-sm font-sans font-medium text-neutral-200 group-hover:text-white transition-colors duration-300">
-            ¿Desarrollas diferentes tipos de páginas web?
+            ¿Desarrollás software enfocado a múltiples plataformas?
           </h3>
           <span class="text-neutral-500 group-open:rotate-180 transition-transform duration-300 text-xs font-mono">↓</span>
         </summary>
         <p class="mt-4 text-xs font-sans font-light text-neutral-400 leading-relaxed border-t border-white/5 pt-4">
-          Exacto. Me gusta diseñar y con esto, explotar el potencial de tu negocio.
-          Cada cliente requiere una necesidad diferente, por lo cual, cada página es unica. Ya sea página informativa, blog, E-commerce, etc.
+          Exacto. Mi principal especialidad es diseñar y robustecer la lógica del lado del servidor (APIs y bases de datos eficientes) para alimentar de manera rápida y consistente tanto interfaces web responsivas como aplicaciones móviles. El objetivo es que la información sea centralizada y segura independientemente del dispositivo de consumo.
         </p>
       </details>
-
       
     </div>
   </section>
   
-  <!-- SECCIÓN: FORMULARIO DE CONTACTO Y REDES -->
   <section id="contacto" class="py-48 px-6 max-w-3xl mx-auto text-center relative z-20">
     <p class="text-[10px] font-mono tracking-widest text-neutral-500 uppercase mb-4">// CONECTAR</p>
     <h2 class="text-4xl md:text-6xl font-display font-bold tracking-tighter text-white mb-8">Diseñemos el futuro.</h2>
@@ -179,7 +187,6 @@ const { profile, socials, experience } = portfolioData;
 
 </Layout>
 
-<!-- LÓGICA DE SCRIPTS (GSAP + VALIDACIÓN XSS) -->
 <script>
   import { gsap } from 'gsap';
   import DOMPurify from 'dompurify';
