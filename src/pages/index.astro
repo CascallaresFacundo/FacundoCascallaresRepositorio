@@ -10,6 +10,7 @@ const { profile, socials, experience } = portfolioData;
 
 <Layout title={`${profile.name} | ${profile.role}`}>
   
+  <!-- SECCIÓN: HERO -->
   <section class="relative min-h-[95vh] flex flex-col justify-between px-6 md:px-12 max-w-7xl mx-auto z-20 pt-32 pb-16">
     <div></div>
 
@@ -87,10 +88,59 @@ const { profile, socials, experience } = portfolioData;
       ))}
     </div>
   </section>
-
   <Technologies client:load />
+
   <ProjectsSection client:load />
   
+  <!-- SECCIÓN: PREGUNTAS FRECUENTES (FAQ) -->
+  <section id="faq" class="py-32 px-6 max-w-3xl mx-auto relative z-20 border-t border-white/[0.02]">
+    <p class="text-[10px] font-mono tracking-widest text-neutral-500 uppercase text-center mb-4">// PREGUNTAS FRECUENTES</p>
+    <h2 class="text-3xl md:text-4xl font-display font-bold tracking-tight text-center text-white mb-12">Respuestas rápidas a dudas comunes.</h2>
+
+    <div class="space-y-4 text-left">
+      
+      <details class="group glass-panel p-6 rounded-xl border border-white/[0.03] [&_summary::-webkit-details-marker]:hidden open:bg-white/[0.02] transition-all duration-300">
+        <summary class="flex items-center justify-between cursor-pointer focus:outline-hidden">
+          <h3 class="text-sm font-sans font-medium text-neutral-200 group-hover:text-white transition-colors duration-300">
+            ¿Cómo coordinás los proyectos de forma remota?
+          </h3>
+          <span class="text-neutral-500 group-open:rotate-180 transition-transform duration-300 text-xs font-mono">↓</span>
+        </summary>
+        <p class="mt-4 text-xs font-sans font-light text-neutral-400 leading-relaxed border-t border-white/5 pt-4">
+          Utilizo Git y plataformas de control de versiones para mantener el código transparente y accesible en todo momento. Definimos el alcance del proyecto al inicio, establecemos entregas incrementales y mantenemos comunicación fluida para asegurar que el desarrollo se alinee perfectamente con tus objetivos de negocio.
+        </p>
+      </details>
+
+      <details class="group glass-panel p-6 rounded-xl border border-white/[0.03] [&_summary::-webkit-details-marker]:hidden open:bg-white/[0.02] transition-all duration-300">
+        <summary class="flex items-center justify-between cursor-pointer focus:outline-hidden">
+          <h3 class="text-sm font-sans font-medium text-neutral-200 group-hover:text-white transition-colors duration-300">
+            ¿Qué tipo de soporte ofrecés?
+          </h3>
+          <span class="text-neutral-500 group-open:rotate-180 transition-transform duration-300 text-xs font-mono">↓</span>
+        </summary>
+        <p class="mt-4 text-xs font-sans font-light text-neutral-400 leading-relaxed border-t border-white/5 pt-4">
+          Ofrezco planes con soporte mensual en los distintos tipos de páginas web.
+        </p>
+      </details>
+
+      <details class="group glass-panel p-6 rounded-xl border border-white/[0.03] [&_summary::-webkit-details-marker]:hidden open:bg-white/[0.02] transition-all duration-300">
+        <summary class="flex items-center justify-between cursor-pointer focus:outline-hidden">
+          <h3 class="text-sm font-sans font-medium text-neutral-200 group-hover:text-white transition-colors duration-300">
+            ¿Desarrollas diferentes tipos de páginas web?
+          </h3>
+          <span class="text-neutral-500 group-open:rotate-180 transition-transform duration-300 text-xs font-mono">↓</span>
+        </summary>
+        <p class="mt-4 text-xs font-sans font-light text-neutral-400 leading-relaxed border-t border-white/5 pt-4">
+          Exacto. Me gusta diseñar y con esto, explotar el potencial de tu negocio.
+          Cada cliente requiere una necesidad diferente, por lo cual, cada página es unica. Ya sea página informativa, blog, E-commerce, etc.
+        </p>
+      </details>
+
+      
+    </div>
+  </section>
+  
+  <!-- SECCIÓN: FORMULARIO DE CONTACTO Y REDES -->
   <section id="contacto" class="py-48 px-6 max-w-3xl mx-auto text-center relative z-20">
     <p class="text-[10px] font-mono tracking-widest text-neutral-500 uppercase mb-4">// CONECTAR</p>
     <h2 class="text-4xl md:text-6xl font-display font-bold tracking-tighter text-white mb-8">Diseñemos el futuro.</h2>
@@ -129,11 +179,14 @@ const { profile, socials, experience } = portfolioData;
 
 </Layout>
 
+<!-- LÓGICA DE SCRIPTS (GSAP + VALIDACIÓN XSS) -->
 <script>
   import { gsap } from 'gsap';
   import DOMPurify from 'dompurify';
 
   window.addEventListener('DOMContentLoaded', () => {
+    
+    // 1. Animaciones de Entrada (Hero)
     const tl = gsap.timeline({ defaults: { ease: 'cubic-bezier(0.16, 1, 0.3, 1)', duration: 1.2 } });
 
     tl.to('#hero-tag', { opacity: 1, y: 0, duration: 0.8 })
@@ -143,7 +196,7 @@ const { profile, socials, experience } = portfolioData;
       .to('#hero-ctas', { opacity: 1, y: 0 }, '-=0.5')
       .to('#hero-scroll-indicator', { opacity: 1, duration: 0.8 }, '-=0.4');
 
-    // Reveal para la línea de tiempo de experiencias
+    // 2. Animaciones de Scroll (Línea de Tiempo)
     gsap.utils.toArray('.reveal-timeline').forEach((element: any) => {
       gsap.from(element, {
         opacity: 0,
@@ -157,7 +210,7 @@ const { profile, socials, experience } = portfolioData;
       });
     });
 
-    // Lógica del Formulario
+    // 3. Procesamiento Seguro del Formulario de Contacto
     const form = document.getElementById('contact-form') as HTMLFormElement;
     const status = document.getElementById('form-status');
     const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
@@ -166,12 +219,12 @@ const { profile, socials, experience } = portfolioData;
       form.addEventListener('submit', async (e) => {
         e.preventDefault(); 
         
-        // Estado de carga visual
+        // Bloqueo visual e interfaz de carga
         submitBtn.disabled = true;
         submitBtn.innerText = "ENVIANDO...";
         submitBtn.style.opacity = "0.5";
 
-        // DOMPurify
+        // Sanitización preventiva con DOMPurify antes de enviar las strings
         const rawName = (document.getElementById('name') as HTMLInputElement).value;
         const rawEmail = (document.getElementById('email') as HTMLInputElement).value;
         const rawMessage = (document.getElementById('message') as HTMLTextAreaElement).value;
