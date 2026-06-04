@@ -45,10 +45,11 @@ export const GET: APIRoute = async () => {
       status: "Actively seeking professional opportunities in IT / Backend roles"
     };
 
-    return new Response(JSON.stringify(cvData, null, 2), {
+return new Response(JSON.stringify(cvData, null, 2), {
       status: 200,
       headers: {
-        'Content-Type': 'application/json', 
+        'Content-Type': 'application/json; charset=utf-8', 
+        'Content-Disposition': 'inline', 
         'Access-Control-Allow-Origin': '*',
         'Cache-Control': 'no-store, no-cache, must-revalidate'
       }
