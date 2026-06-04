@@ -1,4 +1,3 @@
-// src/components/Technologies.tsx
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { portfolioData, type Technology } from '../config/portfolio';

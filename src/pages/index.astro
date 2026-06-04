@@ -3,19 +3,17 @@ import Layout from '../layouts/Layout.astro';
 import { Technologies } from '../components/Technologies';
 import { ProjectsSection } from '../components/ProjectsSection';
 import { portfolioData } from '../config/portfolio';
-import { Footer } from'../components/Footer';
+import { Footer } from '../components/Footer';
 
 const { profile, socials, experience } = portfolioData;
 ---
 
 <Layout title={`${profile.name} | ${profile.role}`}>
   
-  <!-- HERO SECTION CINEMÁTICO ASIMÉTRICO -->
   <section class="relative min-h-[95vh] flex flex-col justify-between px-6 md:px-12 max-w-7xl mx-auto z-20 pt-32 pb-16">
     <div></div>
 
     <div class="space-y-10 max-w-5xl">
-      <!-- Tag Minimalista de Midu-->
       <div id="hero-tag" class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/[0.02] border border-white/5 opacity-0 transform translate-y-4">
         <span class="relative flex h-2 w-2">
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neutral-400 opacity-75"></span>
@@ -24,21 +22,20 @@ const { profile, socials, experience } = portfolioData;
         <span class="text-[10px] font-mono uppercase tracking-widest text-neutral-400">{profile.location}</span>
       </div>
       
-      <!-- Máscara de Texto Monumental -->
       <h1 class="text-6xl sm:text-8xl md:text-[7.5rem] font-display font-bold tracking-tighter leading-[0.85] text-reveal-mask">
-        <span id="hero-title-1" class="block text-neutral-700 opacity-0 transform translate-y-32">{profile.firstName}</span>
-        <span id="hero-title-2" class="block text-transparent bg-clip-text bg-linear-to-b from-white via-neutral-200 to-neutral-500 opacity-0 transform translate-y-32 delay-100">
+        <span id="hero-title-1" class="block text-neutral-700 opacity-0 transform translate-y-32">
+          Facundo <br class="md:hidden" /> Cascallares
+        </span>
+        <span id="hero-title-2" class="block text-transparent bg-clip-text bg-linear-to-b from-white via-neutral-200 to-neutral-500 opacity-0 transform translate-y-32">
           {profile.lastName}
         </span>
       </h1>
       
-      <!-- Subtexto con Jerarquía Visual Refinada -->
       <div class="grid grid-cols-1 md:grid-cols-12 gap-6 pt-4">
         <p id="hero-desc" class="text-md md:text-xl text-neutral-400 md:col-span-7 font-sans font-light leading-relaxed opacity-0 transform translate-y-4">
           {profile.subrole}. <span class="text-neutral-600 font-normal">{profile.biography}</span>
         </p>
         
-        <!-- CTAs Integrados al Flujo Visual -->
         <div id="hero-ctas" class="md:col-span-5 flex flex-row md:justify-end items-center gap-6 opacity-0 transform translate-y-4">
           <a href="#proyectos" class="text-xs font-mono tracking-widest text-white uppercase border-b border-white/30 pb-1 hover:border-white transition-colors duration-300">
             EXPLORAR TRABAJOS ↓
@@ -50,7 +47,6 @@ const { profile, socials, experience } = portfolioData;
       </div>
     </div>
 
-    <!-- Indicador de Scroll Perimetral -->
     <div id="hero-scroll-indicator" class="flex justify-between items-center text-[10px] font-mono tracking-widest text-neutral-600 uppercase pt-16 opacity-0">
       <span>© 2026 INDEX</span>
       <div class="flex items-center gap-2">
@@ -60,16 +56,15 @@ const { profile, socials, experience } = portfolioData;
     </div>
   </section>
 
-  <!-- SECCIÓN TRADICIONAL COMPACTADA CON ESPACIO NEGATIVO -->
   <section id="sobre-mi" class="py-48 px-6 md:px-12 max-w-7xl mx-auto relative z-20 grid grid-cols-1 lg:grid-cols-12 gap-16">
     <div class="lg:col-span-5 space-y-8">
       <p class="text-[10px] font-mono tracking-widest text-neutral-500 uppercase">// SOBRE MI</p>
-<h2 class="text-3xl md:text-4xl font-display font-medium text-white tracking-tight leading-tight">
-  Un solo motor, múltiples plataformas.
-</h2>
-<p class="text-neutral-400 leading-relaxed font-light text-sm">
-  Me especializo en construir la lógica y las APIs que conectan el servidor con aplicaciones web y móviles. Mi enfoque está en estructurar bases de datos eficientes y escribir código limpio bajo buenas prácticas, asegurando que la información fluya de forma rápida, segura y consistente sin importar desde qué dispositivo se conecte el usuario.
-</p>
+      <h2 class="text-3xl md:text-4xl font-display font-medium text-white tracking-tight leading-tight">
+        Un solo motor, múltiples plataformas.
+      </h2>
+      <p class="text-neutral-400 leading-relaxed font-light text-sm">
+        Me especializo en construir la lógica y las APIs que conectan el servidor con aplicaciones web y móviles. Mi enfoque está en estructurar bases de datos eficientes y escribir código limpio bajo buenas prácticas, asegurando que la información fluya de forma rápida, segura y consistente sin importar desde qué dispositivo se conecte el usuario.
+      </p>
     </div>
     
     <div class="lg:col-span-7 space-y-16 relative border-l border-white/5 pl-8 ml-2">
@@ -96,13 +91,11 @@ const { profile, socials, experience } = portfolioData;
   <Technologies client:load />
   <ProjectsSection client:load />
   
-  <!-- Queda este, no tocas más -->
-  <!-- CONTACTO REFINADO INTERACTIVO -->
   <section id="contacto" class="py-48 px-6 max-w-3xl mx-auto text-center relative z-20">
     <p class="text-[10px] font-mono tracking-widest text-neutral-500 uppercase mb-4">// CONECTAR</p>
     <h2 class="text-4xl md:text-6xl font-display font-bold tracking-tighter text-white mb-8">Diseñemos el futuro.</h2>
     
-    <form class="space-y-6 text-left glass-panel p-10 rounded-2xl border border-white/[0.03]" action="https://formspree.io/f/your-id" method="POST">
+    <form id="contact-form" class="space-y-6 text-left glass-panel p-10 rounded-2xl border border-white/[0.03]" action="https://formspree.io/f/xykayprw" method="POST">
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div class="space-y-2">
           <label class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest" for="name">Nombre completo</label>
@@ -117,9 +110,12 @@ const { profile, socials, experience } = portfolioData;
         <label class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest" for="message">Mensaje</label>
         <textarea required rows="5" class="w-full bg-white/[0.01] border border-white/5 rounded-lg px-4 py-3.5 text-sm text-white focus:outline-hidden focus:border-neutral-400 transition-colors duration-300 resize-none" id="message" name="message"></textarea>
       </div>
-      <button type="submit" class="w-full py-4 text-xs font-mono tracking-widest bg-white text-black rounded-lg hover:bg-neutral-200 transition-all duration-500 font-bold cursor-pointer">
+      <button id="submit-btn" type="submit" class="w-full py-4 text-xs font-mono tracking-widest bg-white text-black rounded-lg hover:bg-neutral-200 transition-all duration-500 font-bold cursor-pointer">
         ENVIAR MENSAJE
       </button>
+      <p id="form-status" class="hidden text-[11px] font-mono tracking-wider text-emerald-400 text-center mt-4 uppercase">
+        // Mensaje enviado con éxito. Te responderé a la brevedad.
+      </p>
     </form>
 
     <div class="flex justify-center gap-8 mt-16 text-[10px] font-mono tracking-widest text-neutral-600">
@@ -133,23 +129,20 @@ const { profile, socials, experience } = portfolioData;
 
 </Layout>
 
-<!-- ANIMACIÓN GSAP PRECISIÓN AWWARDS -->
 <script>
   import { gsap } from 'gsap';
 
   window.addEventListener('DOMContentLoaded', () => {
-    const tl = gsap.timeline({ defaults: { ease: 'cubic-bezier(0.16, 1, 0.3, 1)', duration: 1.6 } });
+    const tl = gsap.timeline({ defaults: { ease: 'cubic-bezier(0.16, 1, 0.3, 1)', duration: 1.2 } });
 
-    // Coreografía Cinematográfica de entrada
-    tl.to('#hero-tag', { opacity: 1, y: 0, duration: 1 })
-      .to('#hero-title-1', { opacity: 1, y: 0 }, '-=1.2')
-      .to('#hero-title-2', { opacity: 1, y: 0 }, '-=1.4')
-      .to('#hero-desc', { opacity: 1, y: 0 }, '-=1.3')
-      .to('#hero-ctas', { opacity: 1, y: 0 }, '-=1.4')
-      .to('#hero-scroll-indicator', { opacity: 1, duration: 1 }, '-=1.2');
+    tl.to('#hero-tag', { opacity: 1, y: 0, duration: 0.8 })
+      .to('#hero-title-1', { opacity: 1, y: 0 }, '-=0.6')
+      .to('#hero-title-2', { opacity: 1, y: 0 }, '-=0.5')
+      .to('#hero-desc', { opacity: 1, y: 0 }, '-=0.4')
+      .to('#hero-ctas', { opacity: 1, y: 0 }, '-=0.5')
+      .to('#hero-scroll-indicator', { opacity: 1, duration: 0.8 }, '-=0.4');
 
-      // Ver si la dejo o la saco
-      // Reveal elegante para la línea de tiempo
+    // Reveal para la línea de tiempo de experiencias
     gsap.utils.toArray('.reveal-timeline').forEach((element: any) => {
       gsap.from(element, {
         opacity: 0,
@@ -162,5 +155,54 @@ const { profile, socials, experience } = portfolioData;
         }
       });
     });
+
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const status = document.getElementById('form-status');
+    const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+
+    if (form && status && submitBtn) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault(); 
+        
+        // Bloqueo visual preventivo del botón de envío
+        submitBtn.disabled = true;
+        submitBtn.innerText = "ENVIANDO...";
+        submitBtn.style.opacity = "0.5";
+
+        const data = new FormData(form);
+        
+        try {
+          const response = await fetch(form.action, {
+            method: form.method,
+            body: data,
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+
+          if (response.ok) {
+            form.reset(); 
+            status.classList.remove('hidden');
+            submitBtn.innerText = "MENSAJE ENVIADO";
+            
+            setTimeout(() => {
+              status.classList.add('hidden');
+              submitBtn.disabled = false;
+              submitBtn.innerText = "ENVIAR MENSAJE";
+              submitBtn.style.opacity = "1";
+            }, 5000);
+
+          } else {
+            submitBtn.innerText = "ERROR AL ENVIAR";
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = "1";
+          }
+        } catch (error) {
+          submitBtn.innerText = "ERROR DE CONEXIÓN";
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = "1";
+        }
+      });
+    }
   });
 </script>
