@@ -45,19 +45,24 @@ export const GET: APIRoute = async () => {
       status: "Actively seeking professional opportunities in IT / Backend roles"
     };
 
-return new Response(JSON.stringify(cvData, null, 2), {
+    const jsonString = JSON.stringify(cvData, null, 2);
+ 
+    const jsonBlob = new Blob([jsonString], { type: 'application/json' });
+
+    return new Response(jsonBlob, {
       status: 200,
       headers: {
         'Content-Type': 'application/json; charset=utf-8', 
         'Content-Disposition': 'inline', 
         'Access-Control-Allow-Origin': '*',
-        'Cache-Control': 'no-store, no-cache, must-revalidate'
+        'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
+        'Pragma': 'no-cache'
       }
     });
   } catch (error) {
     return new Response(JSON.stringify({ error: "Internal Server Error" }), {
       status: 500,
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 'Content-Type': 'application/json; charset=utf-8' }
     });
   }
 };
