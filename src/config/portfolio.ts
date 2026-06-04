@@ -51,7 +51,7 @@ export const portfolioData: PortfolioData = {
     name: "Facundo",
     firstName: "FACUNDO CASCALLARES",
     lastName: "DEVELOPER",
-    role: "Full-Stack Developer",
+    role: "Jr Backend Developer",
     subrole: "Desarrollo Web y Apps Móviles",
     biography: "Soy programador web y de aplicaciones móviles. Me enfoco en armar productos digitales completos: desde una interfaz limpia y milimétrica para el usuario, hasta una arquitectura backend sólida, ordenada y preparada para rendir al máximo. Trabajo de manera ágil (con Scrum) porque creo que la clave de un buen desarrollo está en la organización, el cumplimiento de las entregas y la comunicación clara en cada etapa del proyecto.",
     avatar: "/assets/profile-avatar.webp",
@@ -90,7 +90,7 @@ projects: [
       id: "lumiere-catalog",
       title: "Lumiere Espejos",
       description: "Catálogo e-commerce de alta gama automatizado mediante la sincronización en tiempo real de Google Sheets como CMS descentralizado.",
-      category: "Web",
+      category: "Web", 
       technologies: ["Astro", "Tailwind CSS", "JavaScript", "Google Sheets API"],
       liveUrl: "https://www.instagram.com/espejoslumiere/",
       featured: true
