@@ -78,6 +78,7 @@ export const portfolioData: PortfolioData = {
 
     // Database
     { name: "MySQL", category: "database", color: "#4479A1" }, 
+    { name: "PostgreSQL", category: "database", color: "#336791" }, 
 
     // Tools & Extras
     { name: "Git / GitHub", category: "tools", color: "#F05032" },
