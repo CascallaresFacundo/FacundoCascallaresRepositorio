@@ -1,0 +1,277 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Technologies } from '../components/Technologies';
+import { ProjectsSection } from '../components/ProjectsSection';
+import { portfolioData } from '../config/portfolio';
+import { Footer } from '../components/Footer';
+
+const { profile, socials, experience } = portfolioData;
+---
+
+<Layout title={`${profile.name} | ${profile.role}`}>
+  
+  <section class="relative min-h-[95vh] flex flex-col justify-between px-6 md:px-12 max-w-7xl mx-auto z-20 pt-32 pb-16">
+    <div class="space-y-10 max-w-5xl">
+      <div id="hero-tag" class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/[0.02] border border-white/5 opacity-0 transform translate-y-4">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neutral-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+        </span>
+        <span class="text-[10px] font-mono uppercase tracking-widest text-neutral-400">{profile.location}</span>
+      </div>
+      
+      <h1 class="text-6xl sm:text-8xl md:text-[7.5rem] font-display font-bold tracking-tighter leading-[0.85] text-reveal-mask">
+        <span id="hero-title-1" class="block text-neutral-700 opacity-0 transform translate-y-32">
+          Facundo <br class="md:hidden" /> Cascallares
+        </span>
+        <span id="hero-title-2" class="block text-transparent bg-clip-text bg-linear-to-b from-white via-neutral-200 to-neutral-500 opacity-0 transform translate-y-32">
+          {profile.lastName}
+        </span>
+      </h1>
+      
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 pt-4">
+        <p id="hero-desc" class="text-md md:text-xl text-neutral-400 md:col-span-7 font-sans font-light leading-relaxed opacity-0 transform translate-y-4">
+          {profile.subrole}. <span class="text-neutral-600 font-normal">{profile.biography}</span>
+        </p>
+        
+        <div id="hero-ctas" class="md:col-span-5 flex flex-row md:justify-end items-center gap-6 opacity-0 transform translate-y-4">
+          <a href="#proyectos" class="text-xs font-mono tracking-widest text-white uppercase border-b border-white/30 pb-1 hover:border-white transition-colors duration-300">
+            EXPLORAR TRABAJOS ↓
+          </a>
+          <a href="#contacto" class="px-5 py-2.5 text-xs font-mono tracking-widest bg-white text-black rounded-full hover:bg-neutral-200 transition-all duration-500 premium-interactive">
+            HABLEMOS
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div id="hero-scroll-indicator" class="flex justify-between items-center text-[10px] font-mono tracking-widest text-neutral-600 uppercase pt-16 opacity-0">
+      <div class="flex items-center gap-2">
+        <span class="w-12 h-[1px] bg-neutral-800"></span>
+        <span>SCROLL TO VIEW</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre-mi" class="py-48 px-6 md:px-12 max-w-7xl mx-auto relative z-20 grid grid-cols-1 lg:grid-cols-12 gap-16">
+    <div class="lg:col-span-5 space-y-8">
+      <p class="text-[10px] font-mono tracking-widest text-neutral-500 uppercase">// SOBRE MI</p>
+      <h2 class="text-3xl md:text-4xl font-display font-medium text-white tracking-tight leading-tight">
+        Arquitectura sólida para aplicaciones escalables.
+      </h2>
+      <p class="text-neutral-400 leading-relaxed font-light text-sm">
+        Me enfoco en el diseño, desarrollo y optimización del lado del servidor. Mi experiencia autónoma me ha permitido resolver desafíos lógicos reales de negocio: desde el modelado y rendimiento de bases de datos relacionales y la automatización de procesos mediante scripts, hasta la integración segura de pasarelas de pago y la sanitización de flujos de datos. Busco incorporarme a un equipo IT corporativo para aplicar estas metodologías en sistemas complejos y robustos.
+      </p>
+
+      <div class="pt-2">
+        <a 
+          href="/api/cv.json" 
+          target="_blank" 
+          class="inline-flex items-center gap-3 px-4 py-2.5 rounded-lg bg-white/[0.01] border border-white/5 hover:border-neutral-500/40 transition-all duration-300 group premium-interactive"
+        >
+          <span class="font-mono text-[11px] text-emerald-400 font-semibold tracking-wide">GET</span>
+          <span class="font-mono text-[11px] text-neutral-300">/api/cv</span>
+          <span class="font-mono text-[10px] text-neutral-500 group-hover:text-neutral-300 transition-colors duration-300 ml-1">
+            [Ver CV.json] →
+          </span>
+        </a>
+      </div>
+    </div>
+    
+    <div class="lg:col-span-7 space-y-16 relative border-l border-white/5 pl-8 ml-2">
+      {experience.map((exp) => (
+        <div class="reveal-timeline relative space-y-3">
+          <div class="absolute -left-[37px] top-2 h-1.5 w-1.5 rounded-full bg-neutral-500 border border-[#030303] box-content"></div>
+          <span class="text-[10px] font-mono text-neutral-600 tracking-wider">{exp.period}</span>
+          <div class="flex items-baseline justify-between flex-wrap gap-2">
+            <h3 class="text-lg font-medium text-neutral-200">{exp.role}</h3>
+            <span class="text-xs font-mono text-neutral-500">{exp.company}</span>
+          </div>
+          <ul class="space-y-2 pt-1">
+            {exp.description.map(item => (
+              <li class="text-xs text-neutral-500 font-light leading-relaxed">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <Technologies client:load />
+
+  <ProjectsSection client:load />
+  
+  <section id="faq" class="py-32 px-6 max-w-3xl mx-auto relative z-20 border-t border-white/[0.02]">
+    <p class="text-[10px] font-mono tracking-widest text-neutral-500 uppercase text-center mb-4">// PREGUNTAS FRECUENTES</p>
+    <h2 class="text-3xl md:text-4xl font-display font-bold tracking-tight text-center text-white mb-12">Respuestas rápidas a dudas comunes.</h2>
+
+    <div class="space-y-4 text-left">
+      
+      <details class="group glass-panel p-6 rounded-xl border border-white/[0.03] [&_summary::-webkit-details-marker]:hidden open:bg-white/[0.02] transition-all duration-300">
+        <summary class="flex items-center justify-between cursor-pointer focus:outline-hidden">
+          <h3 class="text-sm font-sans font-medium text-neutral-200 group-hover:text-white transition-colors duration-300">
+            ¿Cómo coordinás los proyectos de forma remota?
+          </h3>
+          <span class="text-neutral-500 group-open:rotate-180 transition-transform duration-300 text-xs font-mono">↓</span>
+        </summary>
+        <p class="mt-4 text-xs font-sans font-light text-neutral-400 leading-relaxed border-t border-white/5 pt-4">
+          Utilizo Git y plataformas de control de versiones para mantener el código transparente y accesible en todo momento. Definimos el alcance del proyecto al inicio, establecemos entregas incrementales y mantenemos comunicación fluida para asegurar que el desarrollo se alinee perfectamente con tus objetivos de negocio.
+        </p>
+      </details>
+
+      <details class="group glass-panel p-6 rounded-xl border border-white/[0.03] [&_summary::-webkit-details-marker]:hidden open:bg-white/[0.02] transition-all duration-300">
+        <summary class="flex items-center justify-between cursor-pointer focus:outline-hidden">
+          <h3 class="text-sm font-sans font-medium text-neutral-200 group-hover:text-white transition-colors duration-300">
+            ¿Qué tipo de soporte u optimización ofrecés post-entrega?
+          </h3>
+          <span class="text-neutral-500 group-open:rotate-180 transition-transform duration-300 text-xs font-mono">↓</span>
+        </summary>
+        <p class="mt-4 text-xs font-sans font-light text-neutral-400 leading-relaxed border-t border-white/5 pt-4">
+          Cada sistema se entrega con código limpio, modular y documentado. Además del despliegue inicial, ofrezco soporte técnico enfocado en auditorías de rendimiento en bases de datos, actualizaciones de seguridad, parches en las APIs y monitoreo técnico para garantizar estabilidad absoluta a largo plazo.
+        </p>
+      </details>
+
+      <details class="group glass-panel p-6 rounded-xl border border-white/[0.03] [&_summary::-webkit-details-marker]:hidden open:bg-white/[0.02] transition-all duration-300">
+        <summary class="flex items-center justify-between cursor-pointer focus:outline-hidden">
+          <h3 class="text-sm font-sans font-medium text-neutral-200 group-hover:text-white transition-colors duration-300">
+            ¿Desarrollás software enfocado a múltiples plataformas?
+          </h3>
+          <span class="text-neutral-500 group-open:rotate-180 transition-transform duration-300 text-xs font-mono">↓</span>
+        </summary>
+        <p class="mt-4 text-xs font-sans font-light text-neutral-400 leading-relaxed border-t border-white/5 pt-4">
+          Exacto. Mi principal especialidad es diseñar y robustecer la lógica del lado del servidor (APIs y bases de datos eficientes) para alimentar de manera rápida y consistente tanto interfaces web responsivas como aplicaciones móviles. El objetivo es que la información sea centralizada y segura independientemente del dispositivo de consumo.
+        </p>
+      </details>
+      
+    </div>
+  </section>
+  
+  <section id="contacto" class="py-48 px-6 max-w-3xl mx-auto text-center relative z-20">
+    <p class="text-[10px] font-mono tracking-widest text-neutral-500 uppercase mb-4">// CONECTAR</p>
+    <h2 class="text-4xl md:text-6xl font-display font-bold tracking-tighter text-white mb-8">Diseñemos el futuro.</h2>
+    
+    <form id="contact-form" class="space-y-6 text-left glass-panel p-10 rounded-2xl border border-white/[0.03]" action="https://formspree.io/f/xykayprw" method="POST">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="space-y-2">
+          <label class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest" for="name">Nombre completo</label>
+          <input required class="w-full bg-white/[0.01] border border-white/5 rounded-lg px-4 py-3.5 text-sm text-white focus:outline-hidden focus:border-neutral-400 transition-colors duration-300" id="name" name="name" type="text" />
+        </div>
+        <div class="space-y-2">
+          <label class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest" for="email">Dirección de Email</label>
+          <input required class="w-full bg-white/[0.01] border border-white/5 rounded-lg px-4 py-3.5 text-sm text-white focus:outline-hidden focus:border-neutral-400 transition-colors duration-300" id="email" name="email" type="email" />
+        </div>
+      </div>
+      <div class="space-y-2">
+        <label class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest" for="message">Mensaje</label>
+        <textarea required rows="5" class="w-full bg-white/[0.01] border border-white/5 rounded-lg px-4 py-3.5 text-sm text-white focus:outline-hidden focus:border-neutral-400 transition-colors duration-300 resize-none" id="message" name="message"></textarea>
+      </div>
+      <button id="submit-btn" type="submit" class="w-full py-4 text-xs font-mono tracking-widest bg-white text-black rounded-lg hover:bg-neutral-200 transition-all duration-500 font-bold cursor-pointer">
+        ENVIAR MENSAJE
+      </button>
+      <p id="form-status" class="hidden text-[11px] font-mono tracking-wider text-emerald-400 text-center mt-4 uppercase">
+        // Mensaje enviado con éxito. Te responderé a la brevedad.
+      </p>
+    </form>
+
+    <div class="flex justify-center gap-8 mt-16 text-[10px] font-mono tracking-widest text-neutral-600">
+      <a href={socials.github} target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300">GITHUB</a>
+      <a href={socials.linkedin} target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300">LINKEDIN</a>
+      <a href={socials.whatsapp} target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300">WHATSAPP</a>
+    </div>
+  </section>
+
+  <Footer />
+
+</Layout>
+
+<script>
+  import { gsap } from 'gsap';
+  import DOMPurify from 'dompurify';
+
+  window.addEventListener('DOMContentLoaded', () => {
+    
+    // 1. Animaciones de Entrada (Hero)
+    const tl = gsap.timeline({ defaults: { ease: 'cubic-bezier(0.16, 1, 0.3, 1)', duration: 1.2 } });
+
+    tl.to('#hero-tag', { opacity: 1, y: 0, duration: 0.8 })
+      .to('#hero-title-1', { opacity: 1, y: 0 }, '-=0.6')
+      .to('#hero-title-2', { opacity: 1, y: 0 }, '-=0.5')
+      .to('#hero-desc', { opacity: 1, y: 0 }, '-=0.4')
+      .to('#hero-ctas', { opacity: 1, y: 0 }, '-=0.5')
+      .to('#hero-scroll-indicator', { opacity: 1, duration: 0.8 }, '-=0.4');
+
+    // 2. Animaciones de Scroll (Línea de Tiempo)
+    gsap.utils.toArray('.reveal-timeline').forEach((element: any) => {
+      gsap.from(element, {
+        opacity: 0,
+        y: 20,
+        duration: 1.4,
+        scrollTrigger: {
+          trigger: element,
+          start: 'top 90%',
+          toggleActions: 'play none none none',
+        }
+      });
+    });
+
+    // 3. Procesamiento Seguro del Formulario de Contacto
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const status = document.getElementById('form-status');
+    const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+
+    if (form && status && submitBtn) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault(); 
+        
+        // Bloqueo visual e interfaz de carga
+        submitBtn.disabled = true;
+        submitBtn.innerText = "ENVIANDO...";
+        submitBtn.style.opacity = "0.5";
+
+        // Sanitización preventiva con DOMPurify antes de enviar las strings
+        const rawName = (document.getElementById('name') as HTMLInputElement).value;
+        const rawEmail = (document.getElementById('email') as HTMLInputElement).value;
+        const rawMessage = (document.getElementById('message') as HTMLTextAreaElement).value;
+
+        const cleanData = new FormData();
+        cleanData.append('name', DOMPurify.sanitize(rawName));
+        cleanData.append('email', DOMPurify.sanitize(rawEmail));
+        cleanData.append('message', DOMPurify.sanitize(rawMessage));
+        
+        try {
+          const response = await fetch(form.action, {
+            method: form.method,
+            body: cleanData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+
+          if (response.ok) {
+            form.reset(); 
+            status.classList.remove('hidden');
+            submitBtn.innerText = "MENSAJE ENVIADO";
+            
+            setTimeout(() => {
+              status.classList.add('hidden');
+              submitBtn.disabled = false;
+              submitBtn.innerText = "ENVIAR MENSAJE";
+              submitBtn.style.opacity = "1";
+            }, 5000);
+
+          } else {
+            submitBtn.innerText = "ERROR AL ENVIAR";
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = "1";
+          }
+        } catch (error) {
+          submitBtn.innerText = "ERROR DE CONEXIÓN";
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = "1";
+        }
+      });
+    }
+  });
+</script>
