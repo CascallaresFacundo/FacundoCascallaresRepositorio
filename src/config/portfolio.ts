@@ -87,13 +87,31 @@ export const portfolioData: PortfolioData = {
     { name: "Scrum / Agile", category: "tools", color: "#0284C7" },
   ],
 projects: [
+        {
+      id: "calculadoraDeCostos",
+      title: "Calculadora de Costos de Lumiere Espejos",
+      description: "Calculadora de costos para Lumiere Espejos. Con alta y baja de insumos, modificacion de los mismos. Panel de adminstrador.",
+      category: "Web", 
+      technologies: ["HTML", "CSS", "JavaScript"],
+      liveUrl: "https://calculadora-lumiere.vercel.app/",
+      featured: true
+    },
+      {
+      id: "alfajordb",
+      title: "AlfajorDB",
+      description: "Red social para la comunidad de amantes del alfajor, con sistema de registro, login y panel de administración. Seguimiento de usuarios, un MVP bastante completo",
+      category: "Web", 
+      technologies: ["Angular","Bootstrap", "Python", "Django", "Rest Framework", "postgreSQL", "SEO Local", "UI/UX Optimization", "Cloudinary"],
+      liveUrl: "https://alfajorcitodb-frontend.vercel.app/",
+      featured: true
+    },
     {
       id: "lumiere-catalog",
       title: "Lumiere Espejos",
       description: "Catálogo e-commerce de alta gama automatizado mediante la sincronización en tiempo real de Google Sheets como CMS descentralizado.",
       category: "Web", 
       technologies: ["Astro", "Tailwind CSS", "JavaScript", "Google Sheets API"],
-      liveUrl: "https://www.instagram.com/espejoslumiere/",
+      liveUrl: "https://espejoslumiere.netlify.app/",
       featured: true
     },
     {
