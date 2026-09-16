@@ -9,6 +9,7 @@ export const Navbar = () => {
     { name: 'Sobre mí', url: '#sobre-mi' },
     { name: 'Tecnologías', url: '#tecnologias' },
     { name: 'Proyectos', url: '#proyectos' },
+    { name: 'Preguntas Frecuentes', url: '#faq' },
     { name: 'Contacto', url: '#contacto' },
   ];
 

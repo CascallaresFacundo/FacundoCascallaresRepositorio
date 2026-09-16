@@ -9,10 +9,15 @@ export interface Project {
   title: string;
   description: string;
   longDescription?: string;
-  category: 'Web' | 'Mobile' | 'Design';
+  category: 'Web' | 'Mobile' | 'Design' | string;
   technologies: string[];
+  tags?: string[]; // Alias compatible con componentes React
   githubUrl?: string;
+  github?: string; // Alias compatible con componentes React
   liveUrl?: string;
+  link?: string; // Alias compatible con componentes React
+  image?: string;
+  metrics?: string;
   featured: boolean;
 }
 
@@ -86,23 +91,27 @@ export const portfolioData: PortfolioData = {
     { name: "UI/UX Optimization", category: "extras", color: "#EC4899" },
     { name: "Scrum / Agile", category: "tools", color: "#0284C7" },
   ],
-projects: [
-        {
+  projects: [
+    {
       id: "calculadoraDeCostos",
       title: "Calculadora de Costos de Lumiere Espejos",
-      description: "Calculadora de costos para Lumiere Espejos. Con alta y baja de insumos, modificacion de los mismos. Panel de adminstrador.",
+      description: "Calculadora de costos para Lumiere Espejos. Con alta y baja de insumos, modificación de los mismos. Panel de administración.",
       category: "Web", 
       technologies: ["HTML", "CSS", "JavaScript"],
+      tags: ["HTML", "CSS", "JavaScript"],
       liveUrl: "https://calculadora-lumiere.vercel.app/",
+      link: "https://calculadora-lumiere.vercel.app/",
       featured: true
     },
-      {
+    {
       id: "alfajordb",
       title: "AlfajorDB",
-      description: "Red social para la comunidad de amantes del alfajor, con sistema de registro, login y panel de administración. Seguimiento de usuarios, un MVP bastante completo",
+      description: "Red social para la comunidad de amantes del alfajor, con sistema de registro, login y panel de administración. Seguimiento de usuarios, un MVP bastante completo.",
       category: "Web", 
-      technologies: ["Angular","Bootstrap", "Python", "Django", "Rest Framework", "postgreSQL", "SEO Local", "UI/UX Optimization", "Cloudinary"],
+      technologies: ["Angular", "Bootstrap", "Python", "Django", "Rest Framework", "PostgreSQL", "Cloudinary"],
+      tags: ["Angular", "Bootstrap", "Python", "Django", "Rest Framework", "PostgreSQL"],
       liveUrl: "https://alfajorcitodb-frontend.vercel.app/",
+      link: "https://alfajorcitodb-frontend.vercel.app/",
       featured: true
     },
     {
@@ -111,7 +120,9 @@ projects: [
       description: "Catálogo e-commerce de alta gama automatizado mediante la sincronización en tiempo real de Google Sheets como CMS descentralizado.",
       category: "Web", 
       technologies: ["Astro", "Tailwind CSS", "JavaScript", "Google Sheets API"],
+      tags: ["Astro", "Tailwind CSS", "JavaScript", "Google Sheets API"],
       liveUrl: "https://espejoslumiere.netlify.app/",
+      link: "https://espejoslumiere.netlify.app/",
       featured: true
     },
     {
@@ -120,7 +131,9 @@ projects: [
       description: "Aplicación web para la gestión y reserva de paquetes turísticos, con pasarela integrada mediante Mercado Pago Checkout Pro.",
       category: "Web",
       technologies: ["Java", "Python (Django)", "Rest Framework", "Mercado Pago SDK"],
+      tags: ["Java", "Python (Django)", "Rest Framework", "Mercado Pago SDK"],
       githubUrl: "https://github.com/Travel-Dreams-2025/Traveldreamweb",
+      github: "https://github.com/Travel-Dreams-2025/Traveldreamweb",
       featured: true
     },
     {
@@ -128,8 +141,10 @@ projects: [
       title: "Travel Dream",
       description: "Aplicación móvil nativa para la gestión y reserva de paquetes turísticos, con pasarela integrada mediante Mercado Pago Checkout Pro.",
       category: "Mobile",
-      technologies: ["Java", "Python (Django)","Rest Framework", "Retrofit", "Mercado Pago SDK"],
+      technologies: ["Java", "Python (Django)", "Rest Framework", "Retrofit", "Mercado Pago SDK"],
+      tags: ["Java", "Python (Django)", "Rest Framework", "Retrofit", "Mercado Pago SDK"],
       githubUrl: "https://github.com/Travel-Dreams-2025/travelDreamsMovil",
+      github: "https://github.com/Travel-Dreams-2025/travelDreamsMovil",
       featured: true
     }
   ],
@@ -146,7 +161,7 @@ projects: [
     },
     {
       company: "Sector de Comercio & Distribución",
-      role: "Especialista en Ventas B & Operaciones",
+      role: "Especialista en Ventas B & B Operaciones",
       period: "2021 - Presente",
       description: [
         "Gestión comercial y optimización de flujos de atención al cliente.",

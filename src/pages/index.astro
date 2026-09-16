@@ -45,22 +45,16 @@ const { profile, socials, experience, projects, technologies } = portfolioData;
       </div>
     </div>
 
-    <div id="hero-scroll-indicator" class="flex justify-between items-center text-[10px] font-mono tracking-widest text-neutral-600 uppercase pt-16 opacity-0">
-      <div class="flex items-center gap-2">
-        <span class="w-12 h-[1px] bg-neutral-800"></span>
-        <span>SCROLL TO VIEW</span>
-      </div>
-    </div>
   </section>
 
   <section id="sobre-mi" class="py-48 px-6 md:px-12 max-w-7xl mx-auto relative z-20 grid grid-cols-1 lg:grid-cols-12 gap-16">
     <div class="lg:col-span-5 space-y-8">
       <p class="text-[10px] font-mono tracking-widest text-neutral-500 uppercase">// SOBRE MI</p>
       <h2 class="text-3xl md:text-4xl font-display font-medium text-white tracking-tight leading-tight">
-        Arquitectura sólida para aplicaciones escalables.
+        Programador Web Fullstack 
       </h2>
       <p class="text-neutral-400 leading-relaxed font-light text-sm">
-        Me enfoco en el diseño, desarrollo y optimización del lado del servidor. Mi experiencia autónoma me ha permitido resolver desafíos lógicos reales de negocio: desde el modelado y rendimiento de bases de datos relacionales y la automatización de procesos mediante scripts, hasta la integración segura de pasarelas de pago y la sanitización de flujos de datos. Busco incorporarme a un equipo IT corporativo para aplicar estas metodologías en sistemas complejos y robustos.
+        Mi pasión es la programación. Me encanta el desarrollo web y sobre todo el backend. A lo largo de los años, he trabajado en diversos proyectos, desde aplicaciones web hasta sistemas complejos. Siempre busco aprender nuevas tecnologías y mejorar mis habilidades para ofrecer soluciones eficientes y de calidad a mis clientes.
       </p>
 
       <div class="pt-2">
@@ -99,17 +93,16 @@ const { profile, socials, experience, projects, technologies } = portfolioData;
     </div>
   </section>
 
-  <Technologies client:load />
+  {/* Sincronización limpia de datos mediante props */}
+  <Technologies technologies={technologies} client:load />
 
-  <ProjectsSection client:load />
-  
+  <ProjectsSection projects={projects} client:load />
   
   <section id="faq" class="py-32 px-6 max-w-3xl mx-auto relative z-20 border-t border-white/[0.02]">
     <p class="text-[10px] font-mono tracking-widest text-neutral-500 uppercase text-center mb-4">// PREGUNTAS FRECUENTES</p>
     <h2 class="text-3xl md:text-4xl font-display font-bold tracking-tight text-center text-white mb-12">Respuestas rápidas a dudas comunes.</h2>
 
     <div class="space-y-4 text-left">
-      
       <details class="group glass-panel p-6 rounded-xl border border-white/[0.03] [&_summary::-webkit-details-marker]:hidden open:bg-white/[0.02] transition-all duration-300">
         <summary class="flex items-center justify-between cursor-pointer focus:outline-hidden">
           <h3 class="text-sm font-sans font-medium text-neutral-200 group-hover:text-white transition-colors duration-300">
@@ -118,7 +111,7 @@ const { profile, socials, experience, projects, technologies } = portfolioData;
           <span class="text-neutral-500 group-open:rotate-180 transition-transform duration-300 text-xs font-mono">↓</span>
         </summary>
         <p class="mt-4 text-xs font-sans font-light text-neutral-400 leading-relaxed border-t border-white/5 pt-4">
-          Utilizo Git y plataformas de control de versiones para mantener el código transparente y accesible en todo momento. Definimos el alcance del proyecto al inicio, establecemos entregas incrementales y mantenemos comunicación fluida para asegurar que el desarrollo se alinee perfectamente con tus objetivos de negocio.
+          Realizamos una videollamada por el medio que te quede más comodo. Si sos de Mar del Plata, me puedo acercar en donde te quede comodo para una reunión presencial. Luego, definimos un plan de trabajo con entregables y fechas de entrega. Durante el desarrollo, mantenemos comunicación constante mediante chat o videollamadas según la necesidad.
         </p>
       </details>
 
@@ -130,22 +123,10 @@ const { profile, socials, experience, projects, technologies } = portfolioData;
           <span class="text-neutral-500 group-open:rotate-180 transition-transform duration-300 text-xs font-mono">↓</span>
         </summary>
         <p class="mt-4 text-xs font-sans font-light text-neutral-400 leading-relaxed border-t border-white/5 pt-4">
-          Cada sistema se entrega con código limpio, modular y documentado. Además del despliegue inicial, ofrezco soporte técnico enfocado en auditorías de rendimiento en bases de datos, actualizaciones de seguridad, parches en las APIs y monitoreo técnico para garantizar estabilidad absoluta a largo plazo.
+          Cada sistema o página se entrega con código limpio, modular y documentado. Además del despliegue inicial, ofrezco soporte técnico mensual con costo aparte. Si es algo puntual, se puede acordar un precio por hora. 
         </p>
       </details>
-
-      <details class="group glass-panel p-6 rounded-xl border border-white/[0.03] [&_summary::-webkit-details-marker]:hidden open:bg-white/[0.02] transition-all duration-300">
-        <summary class="flex items-center justify-between cursor-pointer focus:outline-hidden">
-          <h3 class="text-sm font-sans font-medium text-neutral-200 group-hover:text-white transition-colors duration-300">
-            ¿Desarrollás software enfocado a múltiples plataformas?
-          </h3>
-          <span class="text-neutral-500 group-open:rotate-180 transition-transform duration-300 text-xs font-mono">↓</span>
-        </summary>
-        <p class="mt-4 text-xs font-sans font-light text-neutral-400 leading-relaxed border-t border-white/5 pt-4">
-          Exacto. Mi principal especialidad es diseñar y robustecer la lógica del lado del servidor (APIs y bases de datos eficientes) para alimentar de manera rápida y consistente tanto interfaces web responsivas como aplicaciones móviles. El objetivo es que la información sea centralizada y segura independientemente del dispositivo de consumo.
-        </p>
-      </details>
-      
+  
     </div>
   </section>
   
@@ -231,7 +212,7 @@ const { profile, socials, experience, projects, technologies } = portfolioData;
         submitBtn.innerText = "ENVIANDO...";
         submitBtn.style.opacity = "0.5";
 
-        // Sanitización preventiva con DOMPurify antes de enviar las strings
+        // Sanitización preventiva con DOMPurify
         const rawName = (document.getElementById('name') as HTMLInputElement).value;
         const rawEmail = (document.getElementById('email') as HTMLInputElement).value;
         const rawMessage = (document.getElementById('message') as HTMLTextAreaElement).value;
