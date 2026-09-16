@@ -5,7 +5,7 @@ import { ProjectsSection } from '../components/ProjectsSection';
 import { portfolioData } from '../config/portfolio';
 import { Footer } from '../components/Footer';
 
-const { profile, socials, experience } = portfolioData;
+const { profile, socials, experience, projects, technologies } = portfolioData;
 ---
 
 <Layout title={`${profile.name} | ${profile.role}`}>
@@ -102,6 +102,7 @@ const { profile, socials, experience } = portfolioData;
   <Technologies client:load />
 
   <ProjectsSection client:load />
+  
   
   <section id="faq" class="py-32 px-6 max-w-3xl mx-auto relative z-20 border-t border-white/[0.02]">
     <p class="text-[10px] font-mono tracking-widest text-neutral-500 uppercase text-center mb-4">// PREGUNTAS FRECUENTES</p>
