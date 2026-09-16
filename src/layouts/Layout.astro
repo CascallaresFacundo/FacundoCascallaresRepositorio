@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import { portfolioData } from '../config/portfolio';
 import { Navbar } from '../components/Navbar';
+import WhatsAppButton from '../components/whatsAppButton.astro';
 
 interface Props {
   title: string;
@@ -11,8 +12,8 @@ const { title } = Astro.props;
 const { profile } = portfolioData;
 
 // Configuración de variables dinámicas para SEO y Open Graph
-const siteDescription = `${profile.role} - ${profile.subrole}. Especializado en construir la lógica de servidores, APIs eficientes y arquitecturas de bases de datos robustas.`;
-const siteUrl = "https://facundocascallares.vercel.app/"; 
+const siteDescription = `${profile.role} - ${profile.subrole}. Desarrolador Fullstack, con experiencia en desarrollo web y desarrollo backend.`;
+const siteUrl = "https://facundocascallares.dev"; 
 const ogImageUrl = `${siteUrl}/og-image.jpg`;  
 ---
 
@@ -25,7 +26,7 @@ const ogImageUrl = `${siteUrl}/og-image.jpg`;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     
-    <!-- SEO ESTÁNDAR Y INDEXACIÓN ========================================== -->
+    <!-- SEO ESTÁNDAR Y INDEXACIÓN -->
     <title>{title}</title>
     <meta name="description" content={siteDescription} />
     <link rel="canonical" href={siteUrl} />
@@ -41,7 +42,7 @@ const ogImageUrl = `${siteUrl}/og-image.jpg`;
     <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="es_AR" />
 
-    <!-- TWITTER CARDS ========================================== -->
+    <!-- TWITTER CARDS -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={siteUrl} />
     <meta name="twitter:title" content={title} />
@@ -67,8 +68,11 @@ const ogImageUrl = `${siteUrl}/og-image.jpg`;
     <!-- Barra fija de progreso de lectura superior -->
     <div id="scroll-progress" class="fixed top-0 left-0 z-50 h-[2px] w-0 bg-linear-to-r from-purple-500 via-violet-400 to-white transition-all duration-75 ease-out"></div>
 
-    <!-- NAVBAR FLOTANTE INTERACTIVO FIJO (Fuera del wrapper de scroll) -->
+    <!-- NAVBAR FLOTANTE INTERACTIVO FIJO -->
     <Navbar client:load />
+
+    <!-- BOTÓN FLOTANTE DE WHATSAPP FIJO -->
+    <WhatsAppButton />
 
     <!-- Contenedor dinámico animado por el motor de scroll -->
     <div id="smooth-wrapper" class="relative z-10">

@@ -1,0 +1,17 @@
+---
+const phoneNumber = "5492236035305"; 
+const message = encodeURIComponent("¡Hola Facundo! Vi tu portafolio y me gustaría hacerte una consulta.");
+const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+---
+
+<a
+  href={whatsappUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="fixed bottom-6 right-6 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-[#25D366]/20 transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-[#25D366]/40 active:scale-95"
+  aria-label="Contactar por WhatsApp"
+>
+  <svg class="h-7 w-7 fill-current" viewBox="0 0 24 24">
+    <path d="M12 2C6.48 2 2 6.48 2 12C2 13.81 2.49 15.51 3.34 17L2 22L7.17 20.68C8.61 21.52 10.26 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C10.49 20 9.05 19.58 7.82 18.84L7.52 18.66L4.44 19.45L5.25 16.43L5.05 16.11C4.24 14.82 3.8 13.43 3.8 12C3.8 7.48 7.48 3.8 12 3.8C16.52 3.8 20.2 7.48 20.2 12C20.2 16.52 16.52 20 12 20ZM16.36 14.41C16.12 14.29 14.94 13.71 14.72 13.63C14.5 13.55 14.34 13.51 14.18 13.75C14.02 13.99 13.56 14.53 13.42 14.69C13.28 14.85 13.14 14.87 12.9 14.75C12.66 14.63 11.89 14.38 10.98 13.57C10.27 12.94 9.79 12.16 9.65 11.92C9.51 11.68 9.64 11.55 9.76 11.43C9.87 11.32 10.01 11.14 10.13 11C10.25 10.86 10.29 10.76 10.37 10.6C10.45 10.44 10.41 10.3 10.35 10.18C10.29 10.06 9.83 8.93 9.64 8.47C9.45 8.01 9.26 8.07 9.12 8.06C8.99 8.05 8.83 8.05 8.67 8.05C8.51 8.05 8.25 8.11 8.03 8.35C7.81 8.59 7.19 9.17 7.19 10.35C7.19 11.53 8.05 12.67 8.17 12.83C8.29 12.99 9.86 15.41 12.27 16.45C12.84 16.7 13.28 16.85 13.63 16.96C14.2 17.14 14.72 17.11 15.13 17.05C15.59 16.98 16.55 16.47 16.75 15.91C16.95 15.35 16.95 14.87 16.89 14.77C16.83 14.67 16.6 14.53 16.36 14.41Z"></path>
+  </svg>
+</a>
