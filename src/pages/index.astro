@@ -31,7 +31,7 @@ const { profile, socials, experience, projects, technologies } = portfolioData;
       
       <div class="grid grid-cols-1 md:grid-cols-12 gap-6 pt-4">
         <p id="hero-desc" class="text-md md:text-xl text-neutral-400 md:col-span-7 font-sans font-light leading-relaxed opacity-0 transform translate-y-4">
-          {profile.subrole}. <span class="text-neutral-600 font-normal">{profile.biography}</span>
+          {profile.subrole}. <span class="text-neutral-400 font-normal">{profile.biography}</span>
         </p>
         
         <div id="hero-ctas" class="md:col-span-5 flex flex-row md:justify-end items-center gap-6 opacity-0 transform translate-y-4">
@@ -49,7 +49,7 @@ const { profile, socials, experience, projects, technologies } = portfolioData;
 
   <section id="sobre-mi" class="py-48 px-6 md:px-12 max-w-7xl mx-auto relative z-20 grid grid-cols-1 lg:grid-cols-12 gap-16">
     <div class="lg:col-span-5 space-y-8">
-      <p class="text-[10px] font-mono tracking-widest text-neutral-500 uppercase">// SOBRE MI</p>
+      <p class="text-[10px] font-mono tracking-widest text-neutral-400 uppercase">// SOBRE MI</p>
       <h2 class="text-3xl md:text-4xl font-display font-medium text-white tracking-tight leading-tight">
         Programador Web Fullstack 
       </h2>
@@ -65,7 +65,7 @@ const { profile, socials, experience, projects, technologies } = portfolioData;
         >
           <span class="font-mono text-[11px] text-emerald-400 font-semibold tracking-wide">GET</span>
           <span class="font-mono text-[11px] text-neutral-300">/api/cv</span>
-          <span class="font-mono text-[10px] text-neutral-500 group-hover:text-neutral-300 transition-colors duration-300 ml-1">
+          <span class="font-mono text-[10px] text-neutral-400 group-hover:text-neutral-200 transition-colors duration-300 ml-1">
             [Ver CV.json] →
           </span>
         </a>
@@ -75,15 +75,15 @@ const { profile, socials, experience, projects, technologies } = portfolioData;
     <div class="lg:col-span-7 space-y-16 relative border-l border-white/5 pl-8 ml-2">
       {experience.map((exp) => (
         <div class="reveal-timeline relative space-y-3">
-          <div class="absolute -left-[37px] top-2 h-1.5 w-1.5 rounded-full bg-neutral-500 border border-[#030303] box-content"></div>
-          <span class="text-[10px] font-mono text-neutral-600 tracking-wider">{exp.period}</span>
+          <div class="absolute -left-[37px] top-2 h-1.5 w-1.5 rounded-full bg-neutral-400 border border-[#030303] box-content"></div>
+          <span class="text-[10px] font-mono text-neutral-400 tracking-wider">{exp.period}</span>
           <div class="flex items-baseline justify-between flex-wrap gap-2">
             <h3 class="text-lg font-medium text-neutral-200">{exp.role}</h3>
-            <span class="text-xs font-mono text-neutral-500">{exp.company}</span>
+            <span class="text-xs font-mono text-neutral-400">{exp.company}</span>
           </div>
           <ul class="space-y-2 pt-1">
             {exp.description.map(item => (
-              <li class="text-xs text-neutral-500 font-light leading-relaxed">
+              <li class="text-xs text-neutral-400 font-light leading-relaxed">
                 {item}
               </li>
             ))}
@@ -93,13 +93,12 @@ const { profile, socials, experience, projects, technologies } = portfolioData;
     </div>
   </section>
 
-  {/* Sincronización limpia de datos mediante props */}
   <Technologies technologies={technologies} client:load />
 
   <ProjectsSection projects={projects} client:load />
   
   <section id="faq" class="py-32 px-6 max-w-3xl mx-auto relative z-20 border-t border-white/[0.02]">
-    <p class="text-[10px] font-mono tracking-widest text-neutral-500 uppercase text-center mb-4">// PREGUNTAS FRECUENTES</p>
+    <p class="text-[10px] font-mono tracking-widest text-neutral-400 uppercase text-center mb-4">// PREGUNTAS FRECUENTES</p>
     <h2 class="text-3xl md:text-4xl font-display font-bold tracking-tight text-center text-white mb-12">Respuestas rápidas a dudas comunes.</h2>
 
     <div class="space-y-4 text-left">
@@ -108,7 +107,7 @@ const { profile, socials, experience, projects, technologies } = portfolioData;
           <h3 class="text-sm font-sans font-medium text-neutral-200 group-hover:text-white transition-colors duration-300">
             ¿Cómo coordinás los proyectos de forma remota?
           </h3>
-          <span class="text-neutral-500 group-open:rotate-180 transition-transform duration-300 text-xs font-mono">↓</span>
+          <span class="text-neutral-400 group-open:rotate-180 transition-transform duration-300 text-xs font-mono">↓</span>
         </summary>
         <p class="mt-4 text-xs font-sans font-light text-neutral-400 leading-relaxed border-t border-white/5 pt-4">
           Realizamos una videollamada por el medio que te quede más comodo. Si sos de Mar del Plata, me puedo acercar en donde te quede comodo para una reunión presencial. Luego, definimos un plan de trabajo con entregables y fechas de entrega. Durante el desarrollo, mantenemos comunicación constante mediante chat o videollamadas según la necesidad.
@@ -120,33 +119,33 @@ const { profile, socials, experience, projects, technologies } = portfolioData;
           <h3 class="text-sm font-sans font-medium text-neutral-200 group-hover:text-white transition-colors duration-300">
             ¿Qué tipo de soporte u optimización ofrecés post-entrega?
           </h3>
-          <span class="text-neutral-500 group-open:rotate-180 transition-transform duration-300 text-xs font-mono">↓</span>
+          <span class="text-neutral-400 group-open:rotate-180 transition-transform duration-300 text-xs font-mono">↓</span>
         </summary>
         <p class="mt-4 text-xs font-sans font-light text-neutral-400 leading-relaxed border-t border-white/5 pt-4">
           Cada sistema o página se entrega con código limpio, modular y documentado. Además del despliegue inicial, ofrezco soporte técnico mensual con costo aparte. Si es algo puntual, se puede acordar un precio por hora. 
         </p>
       </details>
-  
+ 
     </div>
   </section>
   
   <section id="contacto" class="py-48 px-6 max-w-3xl mx-auto text-center relative z-20">
-    <p class="text-[10px] font-mono tracking-widest text-neutral-500 uppercase mb-4">// CONECTAR</p>
+    <p class="text-[10px] font-mono tracking-widest text-neutral-400 uppercase mb-4">// CONECTAR</p>
     <h2 class="text-4xl md:text-6xl font-display font-bold tracking-tighter text-white mb-8">Diseñemos el futuro.</h2>
     
     <form id="contact-form" class="space-y-6 text-left glass-panel p-10 rounded-2xl border border-white/[0.03]" action="https://formspree.io/f/xykayprw" method="POST">
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div class="space-y-2">
-          <label class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest" for="name">Nombre completo</label>
+          <label class="text-[10px] font-mono text-neutral-400 uppercase tracking-widest" for="name">Nombre completo</label>
           <input required class="w-full bg-white/[0.01] border border-white/5 rounded-lg px-4 py-3.5 text-sm text-white focus:outline-hidden focus:border-neutral-400 transition-colors duration-300" id="name" name="name" type="text" />
         </div>
         <div class="space-y-2">
-          <label class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest" for="email">Dirección de Email</label>
+          <label class="text-[10px] font-mono text-neutral-400 uppercase tracking-widest" for="email">Dirección de Email</label>
           <input required class="w-full bg-white/[0.01] border border-white/5 rounded-lg px-4 py-3.5 text-sm text-white focus:outline-hidden focus:border-neutral-400 transition-colors duration-300" id="email" name="email" type="email" />
         </div>
       </div>
       <div class="space-y-2">
-        <label class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest" for="message">Mensaje</label>
+        <label class="text-[10px] font-mono text-neutral-400 uppercase tracking-widest" for="message">Mensaje</label>
         <textarea required rows="5" class="w-full bg-white/[0.01] border border-white/5 rounded-lg px-4 py-3.5 text-sm text-white focus:outline-hidden focus:border-neutral-400 transition-colors duration-300 resize-none" id="message" name="message"></textarea>
       </div>
       <button id="submit-btn" type="submit" class="w-full py-4 text-xs font-mono tracking-widest bg-white text-black rounded-lg hover:bg-neutral-200 transition-all duration-500 font-bold cursor-pointer">
@@ -157,7 +156,7 @@ const { profile, socials, experience, projects, technologies } = portfolioData;
       </p>
     </form>
 
-    <div class="flex justify-center gap-8 mt-16 text-[10px] font-mono tracking-widest text-neutral-600">
+    <div class="flex justify-center gap-8 mt-16 text-[10px] font-mono tracking-widest text-neutral-400">
       <a href={socials.github} target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300">GITHUB</a>
       <a href={socials.linkedin} target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300">LINKEDIN</a>
       <a href={socials.whatsapp} target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-300">WHATSAPP</a>
@@ -181,8 +180,7 @@ const { profile, socials, experience, projects, technologies } = portfolioData;
       .to('#hero-title-1', { opacity: 1, y: 0 }, '-=0.6')
       .to('#hero-title-2', { opacity: 1, y: 0 }, '-=0.5')
       .to('#hero-desc', { opacity: 1, y: 0 }, '-=0.4')
-      .to('#hero-ctas', { opacity: 1, y: 0 }, '-=0.5')
-      .to('#hero-scroll-indicator', { opacity: 1, duration: 0.8 }, '-=0.4');
+      .to('#hero-ctas', { opacity: 1, y: 0 }, '-=0.5');
 
     // 2. Animaciones de Scroll (Línea de Tiempo)
     gsap.utils.toArray('.reveal-timeline').forEach((element: any) => {
@@ -207,12 +205,10 @@ const { profile, socials, experience, projects, technologies } = portfolioData;
       form.addEventListener('submit', async (e) => {
         e.preventDefault(); 
         
-        // Bloqueo visual e interfaz de carga
         submitBtn.disabled = true;
         submitBtn.innerText = "ENVIANDO...";
         submitBtn.style.opacity = "0.5";
 
-        // Sanitización preventiva con DOMPurify
         const rawName = (document.getElementById('name') as HTMLInputElement).value;
         const rawEmail = (document.getElementById('email') as HTMLInputElement).value;
         const rawMessage = (document.getElementById('message') as HTMLTextAreaElement).value;
