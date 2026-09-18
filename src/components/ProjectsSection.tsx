@@ -36,9 +36,9 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects = [] 
     <section id="proyectos" className="py-32 px-6 md:px-12 max-w-7xl mx-auto relative z-20 border-t border-white/[0.02]">
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
         <div>
-          <p className="text-[10px] font-mono tracking-widest text-neutral-500 uppercase mb-3">// PORTAFOLIO</p>
+          <p className="text-[10px] font-mono tracking-widest text-neutral-400 uppercase mb-3">// PORTAFOLIO</p>
           <h2 className="text-3xl md:text-5xl font-display font-bold tracking-tight text-white">
-            Trabajos seleccionados & arquitecturas.
+            Algunos de mis proyectos recientes
           </h2>
         </div>
 

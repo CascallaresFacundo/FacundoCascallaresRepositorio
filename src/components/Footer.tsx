@@ -11,7 +11,7 @@ export const Footer = () => {
 
         {/* Columna 2: Identidad y Copyright */}
         <div className="text-center space-y-1">
-          <p className="text-[15px] font-mono tracking-widest text-neutral-500 uppercase">
+          <p className="text-[15px] font-mono tracking-widest text-neutral-400 uppercase">
             © {currentYear} ALL RIGHTS RESERVED
           </p>
           <p className="text-xs font-sans font-light text-neutral-400">
