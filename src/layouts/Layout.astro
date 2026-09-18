@@ -62,8 +62,8 @@ const ogImageUrl = `${siteUrl}/og-image.jpg`;
       <div class="absolute top-[40%] -right-[30%] h-[70vw] w-[70vw] rounded-full bg-radial from-blue-500/5 to-transparent blur-[140px]"></div>
     </div>
 
-    <!-- Barra fija de progreso de lectura superior -->
-    <div id="scroll-progress" class="fixed top-0 left-0 z-50 h-[2px] w-0 bg-linear-to-r from-purple-500 via-violet-400 to-white transition-all duration-75 ease-out"></div>
+    <!-- Barra fija de progreso de lectura superior optimizada (Usa transform scaleX en vez de width) -->
+    <div id="scroll-progress" class="fixed top-0 left-0 z-50 h-[2px] w-full bg-linear-to-r from-purple-500 via-violet-400 to-white origin-left transform scale-x-0"></div>
 
     <!-- NAVBAR FLOTANTE INTERACTIVO FIJO -->
     <Navbar client:load />
@@ -108,9 +108,9 @@ const ogImageUrl = `${siteUrl}/og-image.jpg`;
       });
       gsap.ticker.lagSmoothing(0);
 
-      // Animación de la barra de progreso de lectura
+      // Animación de la barra de progreso de lectura (Optimizado con scaleX)
       gsap.to('#scroll-progress', {
-        width: '100%',
+        scaleX: 1,
         ease: 'none',
         scrollTrigger: {
           trigger: 'body',
