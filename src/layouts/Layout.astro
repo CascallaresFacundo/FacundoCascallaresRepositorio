@@ -74,10 +74,10 @@ const ogImageUrl = `${siteUrl}/og-image.jpg`;
     <!-- BOTÓN FLOTANTE DE WHATSAPP FIJO -->
     <WhatsAppButton />
 
-    <!-- Contenedor dinámico animado por el motor de scroll -->
-    <div id="smooth-wrapper" class="relative z-10">
+    <!-- Contenedor principal semántico animado por el motor de scroll -->
+    <main id="smooth-wrapper" class="relative z-10">
       <slot />
-    </div>
+    </main>
 
     <!-- SCRIPTS DE CLIENTE (SMOOTH SCROLL & GSAP) -->
     <script>

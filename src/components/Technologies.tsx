@@ -22,7 +22,7 @@ export const Technologies: React.FC = () => {
     <section id="tecnologias" className="relative py-48 px-6 max-w-7xl mx-auto z-20">
     <div className="mb-20 md:flex md:items-end md:justify-between border-b border-white/[0.03] pb-8">
       <div>
-        <p className="text-[10px] font-mono tracking-widest text-neutral-500 uppercase mb-4">// INFRAESTRUCTURA</p>
+        <p className="text-[10px] font-mono tracking-widest text-neutral-400 uppercase mb-4">// TECNOLOGÍAS</p>
         <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tighter text-white">
           Stack Técnico
         </h2>
@@ -35,7 +35,7 @@ export const Technologies: React.FC = () => {
             key={cat.id}
             onClick={() => setActiveTab(cat.id)}
             className={`relative px-4 py-2 text-[11px] font-mono tracking-wider uppercase rounded-md cursor-pointer transition-colors duration-500 ${
-              activeTab === cat.id ? 'text-white' : 'text-neutral-500 hover:text-neutral-300'
+              activeTab === cat.id ? 'text-white' : 'text-neutral-400 hover:text-neutral-300'
             }`}
           >
             {activeTab === cat.id && (
