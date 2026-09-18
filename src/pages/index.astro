@@ -93,9 +93,9 @@ const { profile, socials, experience, projects, technologies } = portfolioData;
     </div>
   </section>
 
-  <Technologies technologies={technologies} client:load />
+  <Technologies technologies={technologies} client:visible />
 
-  <ProjectsSection projects={projects} client:load />
+  <ProjectsSection projects={projects} client:visible />
   
   <section id="faq" class="py-32 px-6 max-w-3xl mx-auto relative z-20 border-t border-white/[0.02]">
     <p class="text-[10px] font-mono tracking-widest text-neutral-400 uppercase text-center mb-4">// PREGUNTAS FRECUENTES</p>
