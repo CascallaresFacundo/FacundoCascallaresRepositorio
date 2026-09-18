@@ -173,14 +173,13 @@ const { profile, socials, experience, projects, technologies } = portfolioData;
 
   window.addEventListener('DOMContentLoaded', () => {
     
-    // 1. Animaciones de Entrada (Hero)
+    // 1. Animaciones de Entrada (Hero optimizado para LCP: #hero-desc viaja libre)
     const tl = gsap.timeline({ defaults: { ease: 'cubic-bezier(0.16, 1, 0.3, 1)', duration: 1.2 } });
 
     tl.to('#hero-tag', { opacity: 1, y: 0, duration: 0.8 })
       .to('#hero-title-1', { opacity: 1, y: 0 }, '-=0.6')
       .to('#hero-title-2', { opacity: 1, y: 0 }, '-=0.5')
-      .to('#hero-desc', { opacity: 1, y: 0 }, '-=0.4')
-      .to('#hero-ctas', { opacity: 1, y: 0 }, '-=0.5');
+      .to('#hero-ctas', { opacity: 1, y: 0 }, '-=0.4'); // #hero-desc ya no bloquea la carga
 
     // 2. Animaciones de Scroll (Línea de Tiempo)
     gsap.utils.toArray('.reveal-timeline').forEach((element: any) => {
