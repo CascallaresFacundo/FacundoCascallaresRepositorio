@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
-// Tipado extensible para cubrir ambas estructuras
 export interface Project {
   id: string;
   title: string;
@@ -21,11 +20,70 @@ interface ProjectsSectionProps {
   projects?: Project[];
 }
 
+// Subcomponente individual para manejar el Tilt 3D y Glare por tarjeta
+const TiltCard: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className = '' }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [rotateX, setRotateX] = useState(0);
+  const [rotateY, setRotateY] = useState(0);
+  const [glarePosition, setGlarePosition] = useState({ x: 50, y: 50, opacity: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const xc = width / 2;
+    const yc = height / 2;
+    
+    const calcRotateX = -(y - yc) / yc * 8;
+    const calcRotateY = (x - xc) / xc * 8;
+
+    setRotateX(calcRotateX);
+    setRotateY(calcRotateY);
+    setGlarePosition({
+      x: (x / width) * 100,
+      y: (y / height) * 100,
+      opacity: 0.12
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setRotateX(0);
+    setRotateY(0);
+    setGlarePosition(prev => ({ ...prev, opacity: 0 }));
+  };
+
+  return (
+    <div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
+        transition: rotateX === 0 && rotateY === 0 ? 'transform 0.5s ease-out' : 'transform 0.05s ease-out',
+      }}
+      className={`relative rounded-2xl bg-neutral-950/40 p-8 backdrop-blur-xl border border-white/10 shadow-2xl overflow-hidden will-change-transform flex flex-col justify-between hover:border-purple-500/30 hover:bg-neutral-900/50 hover:shadow-purple-500/5 ${className}`}
+    >
+      {/* Glare dinámico que sigue al cursor */}
+      <div 
+        className="absolute inset-0 pointer-events-none transition-opacity duration-300 z-20"
+        style={{
+          opacity: glarePosition.opacity,
+          background: `radial-gradient(circle at ${glarePosition.x}% ${glarePosition.y}%, rgba(255,255,255,0.4) 0%, transparent 70%)`,
+        }}
+      />
+      {children}
+    </div>
+  );
+};
+
 export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects = [] }) => {
   const [activeFilter, setActiveFilter] = useState<string>('all');
 
   const projectList = projects;
-
   const categories = ['all', ...Array.from(new Set(projectList.map((p) => p.category)))];
 
   const filteredProjects = activeFilter === 'all'
@@ -60,20 +118,16 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects = [] 
         </div>
       </div>
 
-      {/* Grilla de Proyectos */}
+      {/* Grilla de Proyectos con Tilt 3D */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {filteredProjects.map((project) => {
-          // Normalización de campos con fallbacks
           const projectTags = project.tags || project.technologies || [];
           const projectGithub = project.github || project.githubUrl;
           const projectLink = project.link || project.liveUrl;
 
           return (
-            <div
-              key={project.id || project.title}
-              className="group glass-panel p-8 rounded-2xl border border-white/[0.03] hover:border-white/10 transition-all duration-500 flex flex-col justify-between"
-            >
-              <div>
+            <TiltCard key={project.id || project.title}>
+              <div className="relative z-10">
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-[10px] font-mono text-emerald-400 tracking-wider uppercase px-2.5 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/20">
                     {project.category}
@@ -94,7 +148,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects = [] 
                 </p>
               </div>
 
-              <div>
+              <div className="relative z-10">
                 {/* Stack Tecnológico / Tags */}
                 <div className="flex flex-wrap gap-1.5 mb-6">
                   {projectTags.map((tag) => (
@@ -131,7 +185,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects = [] 
                   )}
                 </div>
               </div>
-            </div>
+            </TiltCard>
           );
         })}
       </div>

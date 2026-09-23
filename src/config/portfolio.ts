@@ -110,8 +110,8 @@ export const portfolioData: PortfolioData = {
       category: "Web", 
       technologies: ["Angular", "Bootstrap", "Python", "Django", "Rest Framework", "PostgreSQL", "Cloudinary"],
       tags: ["Angular", "Bootstrap", "Python", "Django", "Rest Framework", "PostgreSQL"],
-      liveUrl: "https://alfajorcitodb-frontend.vercel.app/",
-      link: "https://alfajorcitodb-frontend.vercel.app/",
+      liveUrl: "https://alfajordb.com/",
+      link: "https://alfajordb.com/",
       featured: true
     },
     {
