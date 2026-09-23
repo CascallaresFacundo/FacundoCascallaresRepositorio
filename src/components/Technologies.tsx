@@ -61,7 +61,7 @@ const TiltTechCard: React.FC<{ children: React.ReactNode; glowColor: string }> =
         transition: rotateX === 0 && rotateY === 0 ? 'transform 0.5s ease-out' : 'transform 0.05s ease-out',
         ['--glow-color' as any]: `${glowColor}15`
       }}
-      className="group relative p-8 rounded-2xl bg-neutral-950/40 backdrop-blur-xl border border-white/10 shadow-xl transition-all duration-300 hover:border-purple-500/30 hover:bg-neutral-900/50 hover:shadow-purple-500/5 overflow-hidden cursor-crosshair will-change-transform h-full flex flex-col justify-between"
+      className="group relative p-8 rounded-2xl bg-neutral-950/40 backdrop-blur-xl border border-white/10 shadow-xl transition-all duration-300 hover:border-purple-500/30 hover:bg-neutral-900/50 hover:shadow-purple-500/5 overflow-hidden will-change-transform h-full flex flex-col justify-between"
     >
       {/* Glare dinámico que sigue al cursor */}
       <div 
